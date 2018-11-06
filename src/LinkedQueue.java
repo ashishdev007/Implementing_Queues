@@ -26,8 +26,9 @@ public class LinkedQueue<E> implements QueueInt<E> {
     }
 
     @Override
-    public E offer() {
-        return null;
+    public E offer(E obj) {
+        Node<E> element = new Node<>(obj);
+        return obj;
     }
 
     @Override

@@ -1,6 +1,7 @@
 public class LinkedQueue<E> implements QueueInt<E> {
 
     private class Node<E>{
+
         private E data;
         private Node<E> next;
 
@@ -15,6 +16,8 @@ public class LinkedQueue<E> implements QueueInt<E> {
         }
     }
 
+    private Node<E> startOfQueue = null;
+
     @Override
     public E remove() {
         return null;
@@ -22,17 +25,25 @@ public class LinkedQueue<E> implements QueueInt<E> {
 
     @Override
     public E peek() {
+
         return null;
     }
 
     @Override
     public E offer(E obj) {
-        Node<E> element = new Node<>(obj);
-        return obj;
+        if (empty()){
+            startOfQueue = new Node<>(obj);
+        }else {
+            Node current = startOfQueue;
+            while (current.next != null){
+                current = current.next;
+            }
+            current.next = new Node<>(obj);
+        }
     }
 
     @Override
     public boolean empty() {
-        return false;
+        return startOfQueue == null;
     }
 }

@@ -56,4 +56,19 @@ public class LinkedQueue<E> implements QueueInt<E> {
     public boolean empty() {
         return startOfQueue == null;
     }
+
+    public String toString(){
+        String result = "";
+        if (empty()){
+            return null;
+        }else {
+            Node current = startOfQueue;
+            result += current.data + " ";
+            while (current.next != null){
+                current = current.next;
+                result += current.data + " ";
+            }
+            return result;
+        }
+    }
 }

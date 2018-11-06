@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class LinkedQueue<E> implements QueueInt<E> {
 
     private class Node<E>{
@@ -20,13 +22,20 @@ public class LinkedQueue<E> implements QueueInt<E> {
 
     @Override
     public E remove() {
-        return null;
+        if (empty()){
+            throw new NoSuchElementException();
+        }
+        E value = startOfQueue.data;
+        startOfQueue = startOfQueue.next;
+        return value;
     }
 
     @Override
     public E peek() {
-
-        return null;
+        if (empty()){
+            throw new NoSuchElementException();
+        }
+        return startOfQueue.data;
     }
 
     @Override
@@ -40,6 +49,7 @@ public class LinkedQueue<E> implements QueueInt<E> {
             }
             current.next = new Node<>(obj);
         }
+        return obj;
     }
 
     @Override
